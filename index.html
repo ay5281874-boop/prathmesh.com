@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet>
+
+<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prathmesh Shrivastav</title>
+<style>
+    /* ==========================================
+   1. मॉडर्न वेरिएबल्स, रीसेट और एंट्री एनीमेशन
+   ========================================== */
+:root {
+    --bg-dark: #070a12;
+    --card-bg: rgba(30, 41, 59, 0.35);
+    --gold: #f59e0b;
+    --gold-glow: rgba(245, 158, 11, 0.4);
+    --neon-blue: #0ea5e9;
+    --neon-blue-glow: rgba(14, 165, 233, 0.3);
+    --neon-red: #ef4444;
+    --text-main: #f1f5f9;
+    --text-muted: #94a3b8;
+}
+
+/* पूरी वेबसाइट के स्मूथली लोड होने के लिए Keyframe एनीमेशन */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-dark);
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(14, 165, 233, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(239, 68, 68, 0.1) 0px, transparent 50%);
+    background-attachment: fixed;
+    color: var(--text-main);
+    line-height: 1.8;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    width: 100%;
+    animation: fadeInUp 1s cubic-bezier(0.25, 1, 0.5, 1) forwards; /* एंट्री एनीमेशन लागू किया */
+}
+
+br {
+    display: none;
+}
+
+/* ==========================================
+   2. मुख्य हेडिंग और इंट्रो (Top Section)
+   ========================================== */
+h1 {
+    font-size: 2.8rem;
+    color: #ffffff;
+    text-shadow: 0 0 15px var(--gold-glow);
+    text-align: left; 
+    width: 100%; 
+    max-width: 1300px;
+    margin-bottom: 5px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+h1 i {
+    color: var(--gold);
+    font-style: normal;
+    position: relative;
+}
+
+hr:first-of-type {
+    width: 100%;
+    max-width: 1300px;
+    border: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--neon-blue), transparent);
+    margin-bottom: 25px;
+}
+
+/* आरव का इंट्रो बॉक्स - ग्लासमोर्फिज्म और बॉर्डर ग्लो */
+body > p:first-of-type {
+    width: 100%;
+    max-width: 1300px;
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    text-align: left; 
+    font-size: 1.2rem;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    margin-bottom: 45px;
+    transition: border-color 0.3s ease;
+}
+
+body > p:first-of-type:hover {
+    border-color: rgba(14, 165, 233, 0.3); /* होवर करने पर हल्का नीला ग्लो */
+}
+
+body > p:first-of-type b i u {
+    color: var(--neon-blue);
+    text-decoration: none;
+    font-style: normal;
+    text-shadow: 0 0 10px var(--neon-blue-glow);
+}
+
+/* ==========================================
+   3. MIDDLE LAYOUT (लेफ्ट-टू-राइट मेन ग्रिड)
+   ========================================== */
+ul:first-of-type, 
+h2:first-of-type {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(48%, 1fr));
+    gap: 50px;
+    width: 100%;
+    max-width: 1300px;
+    align-items: flex-start;
+}
+
+/* LEFT COLUMN: प्रथमेष की खूबियाँ (एनिमेटेड लिस्ट) */
+ul {
+    list-style: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+ul li {
+    background: rgba(255, 255, 255, 0.02);
+    padding: 16px 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 1.05rem;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    text-align: left;
+}
+
+ul li::before {
+    content: "⚡ ";
+    color: var(--neon-blue);
+    font-weight: bold;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+/* लिस्ट आइटम होवर इफेक्ट */
+ul li:hover {
+    background: rgba(14, 165, 233, 0.06);
+    border-color: rgba(14, 165, 233, 0.2);
+    border-left: 5px solid var(--neon-blue);
+    transform: translateX(8px);
+    color: #ffffff;
+}
+
+ul li:hover::before {
+    transform: scale(1.2); /* बिजली का आइकॉन थोड़ा बड़ा होगा */
+}
+
+body > li { list-style-type: none; display: none; }
+hr:nth-of-type(2) { display: none; }
+
+/* RIGHT COLUMN: किंग कोहली का टाइटल, इमेज और बायोग्राफी */
+h2:first-of-type {
+    font-size: 2.4rem;
+    text-align: left;
+    margin-top: 0;
+    background: linear-gradient(to right, #ffffff, var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border-left: 5px solid var(--gold);
+    padding-left: 15px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+/* किंग कोहली इमेज - एडवांस ग्लो और 3D लिफ्ट इफेक्ट */
+img {
+    display: block;
+    width: 100%;
+    max-width: 460px;
+    border-radius: 20px;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 20px rgba(14, 165, 233, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 25px 0;
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+img:hover {
+    transform: scale(1.03) translateY(-5px);
+    border-color: var(--gold);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(245, 158, 11, 0.35);
+}
+
+h3 {
+    font-size: 1.4rem;
+    color: var(--neon-blue);
+    margin-top: 30px;
+    margin-bottom: 12px;
+    font-weight: 600;
+    text-align: left;
+    letter-spacing: 0.5px;
+}
+
+p {
+    color: var(--text-muted);
+    font-size: 1.08rem;
+    text-align: left; 
+    margin-bottom: 18px;
+    width: 100%;
+    max-width: 1300px;
+}
+
+/* कोहली के बुलेट पॉइंट्स का स्टाइल */
+h3 + p + ul {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+h3 + p + ul li::before {
+    content: "🏏 ";
+}
+
+h3 + p + ul li:hover {
+    border-left-color: var(--gold);
+    background: rgba(245, 158, 11, 0.05);
+}
+
+/* ==========================================
+   4. BOTTOM SECTION: यूट्यूब वीडियो लिंक्स (Strict Vertical + Hover Pop)
+   ========================================== */
+h2:last-of-type {
+    width: 100%;
+    max-width: 1300px;
+    font-size: 2rem;
+    color: #ffffff;
+    margin-top: 70px;
+    margin-bottom: 25px;
+    text-align: left; 
+    border: none;
+    padding: 0;
+}
+
+/* बटन्स एक के नीचे एक क्लीन वर्टिकल लाइन में */
+h2:last-of-type ~ a {
+    display: block;
+    width: 100%;
+    max-width: 480px; 
+    margin: 14px 0 !important; 
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    color: #ffffff;
+    text-decoration: none;
+    text-align: center; 
+    padding: 18px 24px;
+    border-radius: 14px;
+    font-weight: 600;
+    font-size: 1.05rem;
+    border: 1px solid rgba(239, 68, 68, 0.25);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* यूट्यूब बटन्स होवर इफेक्ट (स्मूथ पॉप-आउट और रेड ग्लो) */
+h2:last-of-type ~ a:hover {
+    background: linear-gradient(135deg, var(--neon-red) 0%, #b91c1c 100%);
+    border-color: transparent;
+    transform: translateY(-4px) translateX(6px); /* ऊपर उठने के साथ थोड़ा दाईं तरफ स्लाइड होगा */
+    box-shadow: 0 12px 25px rgba(239, 68, 68, 0.45);
+    letter-spacing: 0.8px; /* टेक्स्ट थोड़ा फैलेगा जो प्रीमियम फील देता है */
+}
+
+/* ==========================================
+   5. रिस्पॉन्सिव डिज़ाइन (Mobile Optimization)
+   ========================================== */
+@media (max-width: 950px) {
+    body {
+        padding: 25px 20px;
+    }
+    ul:first-of-type, h2:first-of-type {
+        grid-template-columns: 1fr; 
+    }
+    img {
+        margin: 20px 0;
+        width: 100%;
+        max-width: 100%;
+    }
+    h2:last-of-type ~ a {
+        max-width: 100%; 
+    }
+}
+
+</style>
+
+   <h1>
+        <i>This Website Is For You Prathmesh (Specially)</i>
+    </h1>
+    <hr>
+    <p>
+       Hey,  Its me <b><i><u>Aarav</u></i></b>
+       <br>
+       I have created this website for you to make you feel special 
+       <br>
+       in this website you will find some of points that are related to you and your life
+    </p>
+    <li>
+        <ul>
+            <li> You are a very kind hearted person</li>
+            <li> You are very helpful to others</li>
+            <li> You are a very good friend</li>
+            <li> You are a very good student</li>
+            <li> You are a very good brother</li>
+            <li> You are a very good son</li>
+            <li> You are a very good human being</li>
+        </ul>
+    </li>
+    these points are just a normal that are related to you but the real feeling is Virat Kohli right!,
+    yes I am definately right so lets move on our <I>
+<U><B>KING</B></U></I>
+<hr>
+<h2>
+    <B><I><U>Virat Kohli</U></I></B>
+</h2>
+<img src="" alt="">
+<h3>
+    Virat Kohli: The Untold Story of Modern Cricket’s ‘King’ and Run-Machine
+</h3>
+<p>
+    In the history of cricket, many great players have graced the field. However, in contemporary cricket, the one player who has
+     completely redefined the standards of batting is Virat Kohli. Fondly known to fans worldwide as 'King Kohli', his aggressive 
+     on-field persona, unquenchable thirst for runs, and unmatched fitness place him among the all-time greats of the game.
+</p>
+<br>
+In this blog, we dive deep into Virat Kohli's incredible journey, his monumental achievements, and his lasting impact on the cricketing world.
+<h3>
+    🌟 From the Streets of Delhi to the Pinnacle of World Cricket
+</h3>
+<p>
+    Born on November 5, 1988, in Delhi, Virat Kohli’s passion for cricket was evident from his childhood. The ultimate turning point
+     in his life came during the 2008 Under-19 World Cup, where he led the Indian team to a historic tournament victory. Shortly after,
+      he earned his maiden call-up to the senior Indian team and never looked back.
+</p><br>
+    Coming from a middle-class family to becoming one of the world's most influential and wealthiest athletes,
+     his journey is a masterclass in hard work, discipline, and unwavering determination.
+      <H3>
+        🏏 The Ultimate Master of Records
+      </H3>
+      <p>
+        Virat Kohli is widely celebrated as the "Chase Master". When India is pursuing a massive total under pressure, Kohli’s
+         bat speaks the loudest. Some of his most defining milestones include:
+      </p>
+      <ul>
+        <li>
+            A Half-Century of ODI Tons: He shattered the legendary Sachin Tendulkar’s record of 49 ODI centuries, 
+            becoming the first batsman in cricket history to score 50+ ODI hundreds.
+        </li>
+        <li>
+            Fastest to 26,000+ Runs: He holds the record for being the quickest batsman to cross the 26,000-run mark in international cricket.
+        </li>
+        <li>
+            T20 World Cup Heroics: His match-winning knock in the final of the 2024 T20 World Cup played a pivotal role in India lifting the
+             trophy, after which he retired from the T20I format on a high.
+
+        </li> 
+        </ul>
+        
+    <h3>🏃‍♂️ The Architect of India's Fitness Revolution</h3>
+        <p>
+            Virat Kohli didn't just accumulate runs; he single-handedly transformed the culture of the Indian cricket team.
+             Around 2012, he completely overhauled his lifestyle and diet, setting a punishing new benchmark for athletic fitness.
+              His transformation made the 'Yo-Yo Test' and strict nutritional regimes mandatory standards for the national side.
+               Even today, his lightning-fast running between the wickets and electric fielding can put younger athletes to shame.
+               </p>
+               <h3>
+                🧠 An Aggressive and Visionary Leader
+               </h3>
+               <p>
+                Taking over the Test captaincy mantle from MS Dhoni, Virat injected a fierce, fearless attitude into the squad.
+                 Under his leadership, India scripted history by winning a Test series in Australia for the very first time and
+                  maintained the ICC Test Ranking's world No. 1 spot for five consecutive years. He taught the Indian team how to 
+                  look the opposition in the eye and win consistently on foreign soil.
+               </p>
+               <h3>
+                💖 Life Outside the Boundary
+               </h3>
+               <p>
+                 While he is a fierce warrior on the field, Virat is a deeply grounded individual off it. His marriage to 
+                Bollywood actress Anushka Sharma introduced the world to his softer, family-oriented side. He is also a dedicated
+                 philanthropist, actively supporting various social causes through the Virat Kohli Foundation.
+               </p>
+               <h3>
+                ✍️ Conclusion
+               </h3>
+               <p>
+                Virat Kohli is far more than just a cricketer; he is a global icon and a source of inspiration for millions.
+                 He proved to the world that talent can open doors, but staying at the absolute top requires burning the midnight
+                  oil every single day. Whenever the history of cricket is spoken of, King Kohli's name will forever shine in letters of gold.
+               </p>
+               <h2>
+                Some Edits Of King Kohli From Which You Take Inspiration For Your Channel -
+               </h2>
+
+              <a href="https://youtube.com/shorts/0_XugDNXFgg?si=7RDxKk4vwew1bhic" target="_blank">Virat is Goat</a><br>
+              <a href="https://youtube.com/shorts/d10QUEUyAt0?si=8VNo9cWUmXaE69sA">Virat Change the moment</a>
+              <br>
+              <a href="https://youtube.com/shorts/lk3QQDGh3RU?si=9NOj4iQKpegazuGD">Virat smiles</a>
+              <br>
+              <a href="https://youtube.com/shorts/IZvKc9NMeiA?si=wWa5PcCsba4VUnyY">Virat is angry mode</a>
+              <br>
+              <a href="https://youtube.com/shorts/5bl2eML5C1Q?si=nYeh-KXMZ-QQLI7Y">973*</a>
+
+
+    
+
+
+</body>
+</html>
